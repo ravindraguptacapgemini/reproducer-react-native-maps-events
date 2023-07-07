@@ -21,7 +21,7 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
-import MapView, { enableLatestRenderer, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Marker, enableLatestRenderer, PROVIDER_GOOGLE } from 'react-native-maps';
 
 enableLatestRenderer();
 
@@ -40,8 +40,8 @@ function App(): JSX.Element {
         provider={PROVIDER_GOOGLE}
         moveOnMarkerPress={false} // android only
         initialRegion={{
-          latitude: 12.55825,
-          longitude: 33.4324,
+          latitude: 37.78825,
+          longitude: -122.4324,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
@@ -61,8 +61,17 @@ function App(): JSX.Element {
         }}
         onPoiClick={() => {
           console.log("Map is loaded....")
-        }}
-      />
+        }}>
+        <Marker
+          key={0}
+          coordinate={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+          }}
+          title={'title'}
+          description={'description'}
+        />
+      </MapView>
     </View>
     // </SafeAreaView>
   );
