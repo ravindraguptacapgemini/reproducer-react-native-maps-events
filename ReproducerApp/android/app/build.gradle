@@ -75,7 +75,7 @@ android {
 
     namespace "com.reproducerapp"
     defaultConfig {
-        applicationId "com.reproducerapp"
+        applicationId "com.intelex.intelexmobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
