@@ -5,36 +5,34 @@
  * @format
  */
 
-import React, { useRef } from 'react';
-import type { PropsWithChildren } from 'react';
+import React, { useReducer } from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
+  Button,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import MapView, { Marker, enableLatestRenderer, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, {
+  Marker,
+  enableLatestRenderer,
+  PROVIDER_GOOGLE,
+} from 'react-native-maps';
 
 enableLatestRenderer();
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const forceUpdate = useReducer(x => x + 1, 0)[1];
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return (
-    // <SafeAreaView style={backgroundStyle}>
-    <View style={styles.container}>
+  const renderMap = () => {
+    return (
       <MapView
         style={styles.map}
         provider={PROVIDER_GOOGLE}
@@ -72,6 +70,22 @@ function App(): JSX.Element {
           description={'description'}
         />
       </MapView>
+    );
+  };
+
+  let map = renderMap();
+
+  return (
+    // <SafeAreaView style={backgroundStyle}>
+    <View style={styles.container}>
+      {map}
+      <Button
+        color={'red'}
+        title={'Re-render Map'}
+        onPress={() => {
+          forceUpdate();
+        }}
+      />
     </View>
     // </SafeAreaView>
   );
