@@ -21,6 +21,8 @@ import MapView, {
   PROVIDER_GOOGLE,
 } from 'react-native-maps';
 
+import LoginScreen from './src/LoginScreen';
+
 enableLatestRenderer();
 
 function App(): JSX.Element {
@@ -73,25 +75,29 @@ function App(): JSX.Element {
     );
   };
 
-  let map = renderMap();
+  // let map = renderMap();
 
   return (
     // <SafeAreaView style={backgroundStyle}>
-    <View style={styles.container}>
-      {map}
+    <View style={styles.page}>
+      {/* {map}
       <Button
         color={'red'}
         title={'Re-render Map'}
         onPress={() => {
           forceUpdate();
         }}
-      />
+      /> */}
+      <LoginScreen />
     </View>
     // </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  page: {
+    flex: 1
+  },
   container: {
     ...StyleSheet.absoluteFillObject,
     height: 600,
