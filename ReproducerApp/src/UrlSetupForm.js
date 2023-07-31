@@ -52,6 +52,7 @@ class UrlSetupForm extends Component {
   }
 
   render() {
+    const HTTPS = 'https://';
     const { keyboardHeight } = this.props;
     const { isSiteUrlFocused } = this.state;
     const isKeyboardOpen = keyboardHeight !== 0;
@@ -65,20 +66,27 @@ class UrlSetupForm extends Component {
             <IXOutlinedTextInput
               automationId="urlField"
               autoCapitalize="none"
+              createRef={(ref) => {
+                this.siteUrlField = ref;
+              }}
               autoCorrect={false}
               defaultValue={this.urlField}
               editable={!this.props.isValidating}
               focusedColor={'#0076BD'}
               keyboardType="url"
               onBlur={() => {
-                if (this.urlField === '') this.siteUrlField.setNativeProps({ text: '' });
+                if (this.urlField === '') {
+                  this.siteUrlField.setNativeProps({ text: '' });
+                }
                 this.setState({ isSiteUrlFocused: false });
               }}
               onChangeText={(e) => {
                 this.urlField = e;
               }}
               onFocus={() => {
-                if (this.urlField === '') this.siteUrlField.setNativeProps({ text: HTTPS });
+                if (this.urlField === '') {
+                  this.siteUrlField.setNativeProps({ text: HTTPS });
+                }
                 this.setState({ isSiteUrlFocused: true });
               }}
               onSubmitEditing={this.validate}
