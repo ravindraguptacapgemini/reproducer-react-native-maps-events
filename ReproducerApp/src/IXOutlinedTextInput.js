@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Animated, StyleSheet, TextInput, View,
 } from 'react-native';
+import getAutomationID from './automationHelper';
 
 export default class IXOutlinedTextInput extends React.Component {
   constructor(props) {
@@ -104,6 +105,7 @@ export default class IXOutlinedTextInput extends React.Component {
                 style={[style, styles.input, animatedStyles.input]}
                 secureTextEntry={passwordObscured}
                 accessible={false}
+                {...getAutomationID(this.props.automationId)}
               />
             </View>
           </View>

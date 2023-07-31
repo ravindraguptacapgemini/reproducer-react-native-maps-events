@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, TouchableHighlight, StyleSheet } from 'react-native';
 
+import getAutomationID from './automationHelper';
+
 class IXButton extends Component {
   getContainerTheme(buttonSettings = {}) {
     const type = buttonSettings.type || this.props.type;
@@ -60,6 +62,7 @@ class IXButton extends Component {
                 underlayColor={intelexTheme.BULLETIN_BUTTON_ACTION_HIGHLIGHT}
                 style={styles.addHeight}
                 accessible={false}
+                {...getAutomationID(automationID)}
               >
 
                 {this.props.children}
@@ -73,6 +76,7 @@ class IXButton extends Component {
                 }}
                 style={styles.addHeight}
                 accessible={false}
+                {...getAutomationID(automationID)}
               >
 
                 {this.props.children}

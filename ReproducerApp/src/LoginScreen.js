@@ -27,10 +27,10 @@ class LoginScreen extends Component {
   }
 
   componentDidMount() {
-    this.createKeyboardListeners()
+    this.createKeyboardListeners();
   }
 
-  componentDidUpdate() {
+  static getDerivedStateFromProps() {
     const animationSettings = {
       duration: 500,
       create: {
@@ -45,6 +45,8 @@ class LoginScreen extends Component {
       },
     };
     LayoutAnimation.configureNext(animationSettings);
+
+    return null;
   }
 
   componentWillUnmount() {

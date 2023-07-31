@@ -63,6 +63,7 @@ class UrlSetupForm extends Component {
           <Text style={styles.textUrlDescription}>{'Sample text description'}</Text>
           <View style={[styles.loginField, isSiteUrlFocused && styles.loginFocusedField]}>
             <IXOutlinedTextInput
+              automationId="urlField"
               autoCapitalize="none"
               autoCorrect={false}
               defaultValue={this.urlField}
@@ -95,6 +96,7 @@ class UrlSetupForm extends Component {
           </View>
           <View style={styles.containerNextButton}>
             <LoadingButton
+              automationID="nextButton"
               text={'Next'}
               style={styles.loginButton}
               border={false}
